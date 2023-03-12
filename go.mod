@@ -1,4 +1,4 @@
-module pdftool
+module github.com/Siggynas/pdftool
 
 go 1.19
 
