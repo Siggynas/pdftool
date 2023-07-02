@@ -1,4 +1,5 @@
-# Lecteur PDF
+# librairie WIP
+
 
 Ceci est la librairie pdf de rsc/io puis forké par ledongthuc avec des fonctionnalités supplémentaires
 
