@@ -11,7 +11,7 @@ import (
     "github.com/signintech/gopdf"
 )
 
-func f_writeTextOnPDF(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text string){
+func F_writeTextOnPDF(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text string){
         err := pdf.SetFont(fontName, "", fontSize)
         if err != nil {
                 log.Print(err.Error())
@@ -21,25 +21,25 @@ func f_writeTextOnPDF(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontS
         pdf.Cell(nil, text)
 }
 
-func f_writeTextOnPDF_Delimiter(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text ,delimiter string)(float64,float64){
+func F_writeTextOnPDF_Delimiter(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text ,delimiter string)(float64,float64){
         var decalageY float64
         decalageY = 0
         multiLineText := strings.Split(text,delimiter)
         for _,Line := range multiLineText {
-                f_writeTextOnPDF(pdf,X,Y+decalageY,fontName,fontSize,Line)
+                F_writeTextOnPDF(pdf,X,Y+decalageY,fontName,fontSize,Line)
                 decalageY = decalageY + float64(fontSize)
         }
         return X,Y+decalageY
 }
 
-func f_writeTextOnPDF_Underline(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text string){
-        f_writeTextOnPDF(pdf,X,Y,fontName,fontSize,text)
+func F_writeTextOnPDF_Underline(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text string){
+        F_writeTextOnPDF(pdf,X,Y,fontName,fontSize,text)
         pdf.SetLineWidth(1)
         w01, _ := pdf.MeasureTextWidth(text)
         pdf.Line(X, Y+float64(fontSize), X+float64(w01),Y+float64(fontSize))
 }
 
-func f_writeTextOnPDF_RightAlign(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text string){
+func F_writeTextOnPDF_RightAlign(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text string){
         err := pdf.SetFont(fontName, "", fontSize)
         if err != nil {
                 log.Print(err.Error())
@@ -51,7 +51,7 @@ func f_writeTextOnPDF_RightAlign(pdf *gopdf.GoPdf,X float64,Y float64,fontName s
                 H: 10,
         },text,gopdf.CellOption{Align: gopdf.Right,})
 }
-func f_writeTextOnPDF_RightAlign2(pdf *gopdf.GoPdf,X float64,Y float64,Width float64,fontName string,fontSize int,text string){
+func F_writeTextOnPDF_RightAlign2(pdf *gopdf.GoPdf,X float64,Y float64,Width float64,fontName string,fontSize int,text string){
         err := pdf.SetFont(fontName, "", fontSize)
         if err != nil {
                 log.Print(err.Error())
@@ -64,14 +64,14 @@ func f_writeTextOnPDF_RightAlign2(pdf *gopdf.GoPdf,X float64,Y float64,Width flo
         },text,gopdf.CellOption{Align: gopdf.Right,})
 }
 
-func f_writeTextOnPDF_WithBorders(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text string,padding float64){
+func F_writeTextOnPDF_WithBorders(pdf *gopdf.GoPdf,X float64,Y float64,fontName string,fontSize int,text string,padding float64){
 
-        f_writeTextOnPDF(pdf,X,Y,fontName,fontSize,text)
+        F_writeTextOnPDF(pdf,X,Y,fontName,fontSize,text)
         w01, _ := pdf.MeasureTextWidth(text)
         pdf.RectFromUpperLeft(X-(padding/2),Y-(padding/4),float64(w01)+(padding),float64(fontSize)+(padding/4))
 }
 
-func f_addFontOnPDF(pdf *gopdf.GoPdf,FontSrc,FontName string) {
+func F_addFontOnPDF(pdf *gopdf.GoPdf,FontSrc,FontName string) {
         err := pdf.AddTTFFont(FontName, FontSrc)
         if err != nil {
                 log.Print(err.Error())
@@ -79,7 +79,7 @@ func f_addFontOnPDF(pdf *gopdf.GoPdf,FontSrc,FontName string) {
         }
 }
 
-func f_ajouterPage(pdf *gopdf.GoPdf,compteurPage *int) {
+func F_ajouterPage(pdf *gopdf.GoPdf,compteurPage *int) {
         pdf.AddPage()
         *compteurPage += 1
 }
