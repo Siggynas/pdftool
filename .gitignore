@@ -1,0 +1,20 @@
+
+dist/
+# Ignore all .exe files
+*.exe
+
+# Ignore all .zip files
+*.zip
+
+# Ignore all .7z files
+*.7z
+
+# Ignore specific folders
+GEN_TDM_ENTREE/
+GEN_TDM_SORTIE/
+GEN_TDM_LOG/
+GEN_TDM_RAPPORTS/
+GEN_TDM_RES/MsgRole
+thumbs.db
+GEN_TDM_RES/datamatrix.jpg
+GITHUB_TOKEN
